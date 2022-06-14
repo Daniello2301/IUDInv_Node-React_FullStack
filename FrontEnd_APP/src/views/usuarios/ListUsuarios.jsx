@@ -23,6 +23,17 @@ export function ListUsuarios() {
         getUsuarios();
     },[]);
 
+    const handleDelete = async (id) => {
+        try 
+        {
+            await API.deleteUser(id);
+            getUsuarios();
+            console.log(id);    
+        } catch (error) {
+            console.log(error); 
+        }
+    }
+
   return (
       <>
         <NavBar />
@@ -58,7 +69,7 @@ export function ListUsuarios() {
                                     <td> {usuario.email} </td>
                                     <td> {usuario.estado} </td>
                                     <td> <Link to={`/usuarios/edit/${usuario._id}`} className="btn btn-secondary"> <FaEdit/> </Link> </td>
-                                    <td> <button className="btn btn-danger"> <FaTrash /> </button> </td>
+                                    <td> <button className="btn btn-danger" onClick={() => {handleDelete(usuario._id)}}> <FaTrash /> </button> </td>
                                 </tr>
                                 ))
                             }

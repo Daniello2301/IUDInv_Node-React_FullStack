@@ -22,6 +22,12 @@ export function NavBar() {
                         <li className="nav-item">
                             <NavLink to={`/marcas`}  className="nav-link" >Marcas</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink to={`/tipos`}  className="nav-link" >Tipos</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to={`/estados`}  className="nav-link" >Estados</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>

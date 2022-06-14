@@ -20,6 +20,15 @@ export function ListMarcas(){
         getMarcas();
     },[])
 
+    const handleDelete = async (id) => {
+        try {
+            await API.deleteMarca(id);
+            getMarcas();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return(
         <>
             <NavBar />
@@ -55,7 +64,7 @@ export function ListMarcas(){
                                     <td> {marca.usuario?.nombre} </td>
                                     <td> {marca.estado} </td>
                                     <td> <Link to={`/marcas/edit/${marca._id}`} className="btn btn-secondary"> <FaEdit/> </Link> </td>
-                                    <td> <button className="btn btn-danger"> <FaTrash /> </button> </td>
+                                    <td> <button className="btn btn-danger" onClick={() => {handleDelete(marca._id)}} > <FaTrash /> </button> </td>
                                 </tr>
                                 ))
                             }

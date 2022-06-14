@@ -19,3 +19,23 @@ export async function createUser(usuario) {
         console.log(error);
     }
 }
+
+export async function updateUser(usuario) {
+    try 
+    {
+        const response = await axiosConfig.put(`/usuarios/${usuario._id}`, usuario);
+        return response.data;   
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function deleteUser(id) {
+    try 
+    {
+        const response = await axiosConfig.delete(`/usuarios/${id}`);
+        return response.data;   
+    } catch (error) {
+        console.log(error);
+    }
+}

@@ -20,3 +20,23 @@ export function createMarca(marca){
         console.log(error);
     }
 }
+
+export function updateMarca(marca){
+    try 
+    {
+        const response = axiosConfig.put(`/marcas/${marca._id}`, marca);
+        return response.data;       
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function deleteMarca(id){
+    try 
+    {
+        const response = await axiosConfig.delete(`/marcas/${id}`);
+        return response.data;       
+    } catch (error) {
+        console.log(error);
+    }
+}

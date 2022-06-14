@@ -12,6 +12,10 @@ import { ListInventarios } from './views/inventarios/ListInventarios'
 import { CreateInventario } from './views/inventarios/CreateInventario';
 import { ListMarcas } from './views/marcas/ListMarcas';
 import { CreateMarca } from './views/marcas/CreateMarca';
+import { ListTipos } from './views/tipos/ListTipos';
+import { CreateTipo } from './views/tipos/CreateTipo';
+import { ListEstados } from './views/estados/ListEstados';
+import { CreateEstado } from './views/estados/CreateEstado';
 
 export function App() {
 
@@ -25,6 +29,10 @@ export function App() {
         <Route path="/usuarios/create" element={<CreateUsuario />} />
         <Route path="/marcas" element={<ListMarcas />} />
         <Route path="/marcas/create" element={<CreateMarca />} />
+        <Route path="/tipos" element={<ListTipos />} />
+        <Route path="/tipos/create" element={<CreateTipo />} />
+        <Route path="/estados" element={<ListEstados />} />
+        <Route path="/estados/create" element={<CreateEstado />} />
       </Routes>
     </div>
   )
