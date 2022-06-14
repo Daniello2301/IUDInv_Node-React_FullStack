@@ -10,6 +10,15 @@ export async function getInventarios(){
     }
 }
 
+export async function getInventario(id){
+    try {
+        const response = await axiosConfig.get(`/inventarios/${id}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export async function createInventario(inventario){
     try {
         const response = await axiosConfig.post(`/inventarios`, inventario);
@@ -19,9 +28,9 @@ export async function createInventario(inventario){
     }
 }
 
-export async function updateInventario(inventario){
+export async function updateInventario(id, inventario){
     try {
-        const response = await axiosConfig.put(`/inventarios/${inventario._id}`, inventario);
+        const response = await axiosConfig.put(`/inventarios/${id}`, inventario);
         return response.data;
     } catch (error) {
         console.log(error);

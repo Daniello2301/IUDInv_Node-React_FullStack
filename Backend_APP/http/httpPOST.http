@@ -1,0 +1,10 @@
+
+POST https://localhost:3300/api/usuarios
+content-type: application/json
+
+{
+    "nomre": "Juan",
+    "email": "juan@gamil.com",
+    "contrasena": "123456",
+    "estado": "activo"
+}

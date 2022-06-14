@@ -51,7 +51,7 @@ const getById = async( req, res ) => {
     
      const response = await Inventario.findById({_id: id}).populate(
          {
-             path: 'usaurio',
+             path: 'usuario',
              select: 'nombre email estado '
          }
      );

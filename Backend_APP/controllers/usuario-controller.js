@@ -21,7 +21,7 @@ const getAll = async( req, res ) =>{
 const getById = async(req, res) => {
     try 
     {
-        const id = req.params.id;
+        const { id }= req.params;
 
         const response = await Usuario.findById(id);
 

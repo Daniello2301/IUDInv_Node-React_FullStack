@@ -82,6 +82,7 @@ export function CreateEstado(){
                             <div className="form-group">
                                 <label htmlFor="usaurio">Usuario</label>
                                 <select className="form-control" id="usuario" name="email" value={email} onChange={handleChange}>
+                                    <option value="">Seleccione un usuario</option>
                                     {
                                         usuarios.map(usuario => (
                                             <option key={usuario._id} value={usuario.email}>{usuario.nombre}</option>

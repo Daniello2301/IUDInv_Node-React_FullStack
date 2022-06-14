@@ -10,20 +10,38 @@ export async function getUsuarios() {
     }
 }
 
-export async function createUser(usuario) {
+export async function getUsuario(id) {
     try 
     {
-        const response = await axiosConfig.post(`/usuarios`, usuario);
+        const response = await axiosConfig.get(`/usuarios/${id}`);
         return response.data;   
     } catch (error) {
         console.log(error);
     }
 }
 
-export async function updateUser(usuario) {
+export async function createUser(usuario) {
     try 
     {
-        const response = await axiosConfig.put(`/usuarios/${usuario._id}`, usuario);
+        const response = await axiosConfig.post(`/usuarios`, usuario, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return response.data;   
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function updateUser(id, usuario) {
+    try 
+    {
+        const response = await axiosConfig.put(`/usuarios/${id}`, usuario, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         return response.data;   
     } catch (error) {
         console.log(error);

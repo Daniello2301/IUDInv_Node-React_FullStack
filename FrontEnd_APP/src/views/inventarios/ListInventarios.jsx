@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import * as API from "../../services/iventarios-services";
 
 import { NavBar } from "../../components/navBar/NavBar";
+import './ListInventario.css';
 
 export function ListInventarios(){
 
@@ -24,33 +25,31 @@ export function ListInventarios(){
         <>
         <NavBar />
         <div className="container">
-            <div className="row">
+            <div className="row my-3 text-center">
                 <div className="col" >
                     <h1>Lista de Inventarios</h1>
                 </div>
                 <div className="col">
-                    <Link to={`/inventarios/create`} className="btn btn-primary">Create</Link>
+                    <Link to={`/inventarios/create`} className="btn btn-primary">Agregar Inventario</Link>
                 </div>           
             </div>
             <div className="row" >
                     {
                         inventarios.map(inventario => (
                             <>
-                                <div className="card" style={{width: 18 + "rem"}}>
+                                <div key={inventario._id} className="card border-secondary position-relative" >
                                     <img src={inventario.foto} className="card-img-top" alt="image..."/>
                                     <div className="card-body">
-                                        <h5 className="card-title"> { inventario.descripcion ? inventario.descripcion : "Not Content"} </h5>
-                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <h5 className="card-title"> { inventario.descripcion ? inventario.descripcion : "Not Disponible"} </h5>
                                     </div>
                                     <ul className="list-group list-group-flush">
-                                        <li className="list-group-item">An item</li>
-                                        <li className="list-group-item">A second item</li>
-                                        <li className="list-group-item">A third item</li>
+                                        <li className="list-group-item"> {inventario.modelo ? inventario.modelo : "No disponible" } </li>
+                                        <li className="list-group-item"> {inventario.precio ? inventario.precio : "No disponibel" } </li>
+                                        <li className="list-group-item"> {inventario.estado ? inventario.estado : "No disponible" } </li>
+                                        <li className="list-group-item"> {inventario.usuario?.nombre ? inventario.usuario?.nombre: "No disponible" } </li>
                                     </ul>
                                     <div className="card-body">
-                                        <Link to={`/inventarios/${inventario._id}`} className="card-link">Ver</Link>
-                                        <a href="#" className="card-link">Card link</a>
-                                        <a href="#" className="card-link">Another link</a>
+                                        <Link to={`/inventarios/edit/${inventario._id}`} className="btn btn-secondary" >Editar</Link>
                                     </div>
                                 </div>
                             </>
@@ -59,6 +58,9 @@ export function ListInventarios(){
             </div>
 
         </div>
+
         </>
     )
+
+    
 }

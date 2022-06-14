@@ -48,7 +48,7 @@ export function ListUsuarios() {
             </div>
             <div className="row" >
                 <div className="col">
-                <div clasName="col col-md-12">
+                <div className="col col-md-12">
                     <table className="table">
                         <thead>
                             <tr>
@@ -68,7 +68,7 @@ export function ListUsuarios() {
                                     <td> {usuario.nombre} </td>
                                     <td> {usuario.email} </td>
                                     <td> {usuario.estado} </td>
-                                    <td> <Link to={`/usuarios/edit/${usuario._id}`} className="btn btn-secondary"> <FaEdit/> </Link> </td>
+                                    <td> <Link to={`/usuarios/edit/${usuario._id}`}><FaEdit /></Link> </td>
                                     <td> <button className="btn btn-danger" onClick={() => {handleDelete(usuario._id)}}> <FaTrash /> </button> </td>
                                 </tr>
                                 ))

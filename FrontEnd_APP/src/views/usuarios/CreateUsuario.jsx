@@ -1,11 +1,15 @@
 import React from "react";
 import { useState} from "react";
-
 import * as API from '../../services/usuarios-services'
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import 'sweetalert2/src/sweetalert2.scss';
+
 
 import { NavBar } from "../../components/navBar/NavBar";
 
 export function CreateUsuario(){
+
+    
 
     const [usuario, setUsuario] = useState({});
 
@@ -21,6 +25,12 @@ export function CreateUsuario(){
         e.target.reset();
         await API.createUser(usuario);
         setUsuario({nombre: '', email: '', contrasena: '', estado: ''});
+        Swal.fire({
+            title: 'Usuario creado',
+            text: 'El usuario se creó correctamente',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        })
         console.log(usuario);
     }
 
@@ -33,22 +43,22 @@ export function CreateUsuario(){
                         <h1>Create Usuario</h1>
                     </div>
                 </div>
-                <div clasName="row">
+                <div className="row">
                     <div className="col-md-12 w-100 d-flex justify-content-center ">
                         <form onSubmit={handleSubmit} className="form_container w-50" >
                             <div class="mb-3">
-                                <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" value={nombre} onChange={e => handleChange(e) } required='' />
+                                <label for="nombre" className="form-label">Nombre</label>
+                                <input type="text" className="form-control" id="nombre" name="nombre" value={nombre} onChange={e => handleChange(e) } required='' />
                             </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" onChange={e => handleChange(e) } value={email} required='' />
+                            <div className="mb-3">
+                                <label for="email" className="form-label">Email</label>
+                                <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" onChange={e => handleChange(e) } value={email} required='' />
                             </div>
-                            <div class="mb-3">
+                            <div className="mb-3">
                                 <label for="contrasena" className="form-label">Password</label>
                                 <input type="password" className="form-control" id="contrasena"name="contrasena" onChange={e => handleChange(e) } value={contrasena} required='' />
                             </div>
-                            <div class="mb-3">
+                            <div className="mb-3">
                                 <label for="Select" className="form-label">Estado</label>
                                 <select id="Select" className="form-select" name="estado" onChange={e => handleChange(e) }  value={estado} required='' >
                                     <option>--Select--</option>
