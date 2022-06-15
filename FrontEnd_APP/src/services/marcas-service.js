@@ -11,20 +11,30 @@ export async function getMarcas() {
     }
 }
 
-export function createMarca(marca){
+export async function getMarca(id){
+    try {
+        const response = await axiosConfig.get(`/marcas/${id}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+export async function createMarca(marca){
     try 
     {
-        const response = axiosConfig.post(`/marcas`, marca);
+        const response = await axiosConfig.post(`/marcas`, marca);
         return response.data;       
     } catch (error) {
         console.log(error);
     }
 }
 
-export function updateMarca(marca){
+export async function updateMarca(id, marca){
     try 
     {
-        const response = axiosConfig.put(`/marcas/${marca._id}`, marca);
+        const response = await axiosConfig.put(`/marcas/${id}`, marca);
         return response.data;       
     } catch (error) {
         console.log(error);

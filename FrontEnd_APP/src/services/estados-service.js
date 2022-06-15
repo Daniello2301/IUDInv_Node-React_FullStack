@@ -9,6 +9,16 @@ export async function getEstados() {
     }
 }
 
+export async function getEstado(id){
+    try {
+        const response = await axiosConfig.get(`/estados/${id}`);
+        return response.data;       
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 export async function createEstado(estado){
     try {
         const response = await axiosConfig.post(`/estados`, estado);
@@ -18,9 +28,9 @@ export async function createEstado(estado){
     }
 }
 
-export async function updateEstado(estado){
+export async function updateEstado(id, estado){
     try {
-        const response = await axiosConfig.put(`/estados/${estado._id}`, estado);
+        const response = await axiosConfig.put(`/estados/${id}`, estado);
         return response.data;       
     } catch (error) {
         console.log(error);

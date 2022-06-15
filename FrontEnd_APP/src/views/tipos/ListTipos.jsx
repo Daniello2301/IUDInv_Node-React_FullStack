@@ -4,12 +4,20 @@ import { FaEdit, FaTrash } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import * as API from '../../services/tipos-service';
 import { NavBar } from '../../components/navBar/NavBar'
+import Swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss';
 
 export function ListTipos() {
 
     const [tipos, setTipos] = useState([]);
 
     const getTipos = async () => {
+        Swal.fire({
+            icon: 'success',
+            title: 'Cagando..',
+            showConfirmButton: false,
+            timer: 800
+        })
         const tipos = await API.getTipos();
         setTipos(tipos);
         console.log(tipos);
@@ -35,7 +43,7 @@ export function ListTipos() {
                     <h1>Lista de Tipos</h1>
                 </div>
                 <div className="col">
-                    <Link to={`/tipos/create`} className="btn btn-primary w-50">Create</Link>
+                    <Link to={`/tipos/create`} className="btn btn-primary w-50">Crear Tipo</Link>
                 </div>
             </div>
             <div className="row" >

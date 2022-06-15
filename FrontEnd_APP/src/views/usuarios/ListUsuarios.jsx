@@ -8,12 +8,21 @@ import * as API from '../../services/usuarios-services'
 
 import { NavBar } from "../../components/navBar/NavBar";
 
+import Swal from "sweetalert2";
+import 'sweetalert2/src/sweetalert2.scss';
 
 export function ListUsuarios() {
 
     const [usuarios, setUsuarios] = useState([]);
 
     const getUsuarios = async () => {
+        
+        Swal.fire({
+            icon: 'success',
+            title: 'Cagando..',
+            showConfirmButton: false,
+            timer: 800
+          })
         const usuarios = await API.getUsuarios();
         setUsuarios(usuarios);
         console.log(usuarios);
@@ -33,7 +42,7 @@ export function ListUsuarios() {
             console.log(error); 
         }
     }
-
+ 
   return (
       <>
         <NavBar />
@@ -43,7 +52,7 @@ export function ListUsuarios() {
                     <h1>Lista de Usuarios</h1>
                 </div>
                 <div className="col">
-                    <Link to={`/usuarios/create`} className="btn btn-primary w-50">Create</Link>
+                    <Link to={`/usuarios/create`} className="btn btn-primary w-50">Crear Usuario</Link>
                 </div>
             </div>
             <div className="row" >

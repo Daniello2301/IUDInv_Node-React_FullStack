@@ -5,12 +5,20 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 
 import {NavBar} from "../../components/navBar/NavBar";
 import * as API from '../../services/marcas-service';
+import Swal from "sweetalert2";
+import 'sweetalert2/src/sweetalert2.scss';
 
 export function ListMarcas(){
 
     const [marcas, setMarcas] = useState([]);
 
     const getMarcas = async () => {
+        Swal.fire({
+            icon: 'success',
+            title: 'Cagando..',
+            showConfirmButton: false,
+            timer: 800
+        })
         const marcas = await API.getMarcas();
         setMarcas(marcas);
         console.log(marcas);
@@ -38,12 +46,12 @@ export function ListMarcas(){
                     <h1>Lista de marcas</h1>
                 </div>
                 <div className="col">
-                    <Link to={`/marcas/create`} className="btn btn-primary w-50">Create</Link>
+                    <Link to={`/marcas/create`} className="btn btn-primary w-50">Crear Marca</Link>
                 </div>
             </div>
             <div className="row" >
                 <div className="col">
-                <div clasName="col col-md-12">
+                <div className="col col-md-12">
                     <table className="table">
                         <thead>
                             <tr>

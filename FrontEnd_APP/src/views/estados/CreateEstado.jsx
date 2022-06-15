@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import * as API_E from '../../services/estados-service';
 import * as API_U from '../../services/usuarios-services';
@@ -75,11 +76,11 @@ export function CreateEstado(){
                 <div className="row">
                     <div className="col-md-12">
                         <form onSubmit={handleSubmit}>
-                            <div className="form-group">
+                            <div className="form-group my-3">
                                 <label htmlFor="nombre">Nombre</label>
                                 <input type="text" className="form-control" id="nombre" name="nombre" value={nombre} onChange={handleChange} />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group my-3">
                                 <label htmlFor="usaurio">Usuario</label>
                                 <select className="form-control" id="usuario" name="email" value={email} onChange={handleChange}>
                                     <option value="">Seleccione un usuario</option>
@@ -90,15 +91,18 @@ export function CreateEstado(){
                                     }
                                 </select>
                             </div>
-                            <div className="form-group">
+                            <div className="form-group my-3">
                                 <label htmlFor="estado">Estado</label>
                                 <select className="form-control" id="estado" name="estado" value={estado} onChange={handleChange} required="" >
                                     <option value="">Seleccione un estado</option>
                                     <option value="Activo">Activo</option>
                                     <option value="Inactivo">Inactivo</option>
                                 </select>
-                            </div> 
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            </div>
+                            <div className="form-group d-flex justify-content-center my-3">
+                                <button type="submit" className="btn btn-primary mx-3" style={{width: 8 + "rem" }}>Enviar</button>
+                                <Link to="/estados" className="btn btn-secondary mx-3" style={{width: 8 + "rem" }}>Cancelar</Link>
+                            </div>
                         </form>
                     </div>
                 </div>

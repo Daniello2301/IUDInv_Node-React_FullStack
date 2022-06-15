@@ -20,10 +20,20 @@ export async function createTipo(tipo){
     }
 }
 
-export async function updateTipo(tipo){
+export async function getTipoEquipo(id){
     try 
     {
-        const response = await axiosConfig.put(`/tipos/${tipo._id}`, tipo);
+        const response = await axiosConfig.get(`/tipos/${id}`);
+        return response.data;       
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function updateTipo(id, tipo){
+    try 
+    {
+        const response = await axiosConfig.put(`/tipos/${id}`, tipo);
         return response.data;       
     } catch (error) {
         console.log(error);

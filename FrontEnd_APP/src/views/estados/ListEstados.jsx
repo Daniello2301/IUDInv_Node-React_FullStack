@@ -4,11 +4,20 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import * as API from '../../services/estados-service';
 import { NavBar } from '../../components/navBar/NavBar'
+import Swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss';
+
 export function ListEstados(){
     
     const [estados, setEstados] = useState([]);
 
     const getEstados = async () => {
+        Swal.fire({
+            icon: 'success',
+            title: 'Cagando..',
+            showConfirmButton: false,
+            timer: 500
+        })
         const estados = await API.getEstados();
         setEstados(estados);
         console.log(estados);
@@ -33,7 +42,7 @@ export function ListEstados(){
                     <h1>Lista de Estados</h1>
                 </div>
                 <div className="col">
-                    <Link to={`/estados/create`} className="btn btn-primary w-50">Create</Link>
+                    <Link to={`/estados/create`} className="btn btn-primary w-50">Crear Estado</Link>
                 </div>
             </div>
             <div className="row" >
@@ -58,7 +67,7 @@ export function ListEstados(){
                                         <td> {estado.nombre} </td>
                                         <td> {estado.usuario?.nombre} </td>
                                         <td> {estado.estado} </td>
-                                        <td> <Link to={`/tipos/edit/${estado._id}`} className="btn btn-secondary"> <FaEdit/> </Link> </td>
+                                        <td> <Link to={`/estados/edit/${estado._id}`} className="btn btn-secondary"> <FaEdit/> </Link> </td>
                                         <td> <button onClick={() => handleDelete(estado._id)} className="btn btn-danger"> <FaTrash/> </button> </td>                                   
                                     </tr>
                                 ))

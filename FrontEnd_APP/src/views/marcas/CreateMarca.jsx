@@ -1,6 +1,7 @@
 import React from "react";
 
 import {useState, useEffect } from 'react'; 
+import { Link } from "react-router-dom";
 
 import * as API from '../../services/marcas-service';
 import * as APIU from '../../services/usuarios-services';
@@ -61,19 +62,19 @@ export function CreateMarca() {
                         <h1>Crear Marca</h1>
                     </div>
                 </div>
-                <div clasName="row">
+                <div className="row">
                     <div className="col-md-12 w-100 d-flex justify-content-center ">
                         <form onSubmit={handleSubmit} className="form_container w-50" >
                             <div class="mb-3">
-                                <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" value={nombre} onChange={e => setNombre(e.target.value) } required='' />
+                                <label for="nombre" className="form-label">Nombre</label>
+                                <input type="text" className="form-control" id="nombre" name="nombre" value={nombre} onChange={e => setNombre(e.target.value) } required='' />
                             </div>
-                            <div class="mb-3">
+                            <div className="fomr-group mb-3">
                                 <label for="Select" className="form-label">Usuario</label>
                             <select id="Select" className="form-select" name="usuario" onChange={e => setEmail(e.target.value) }  value={email} required='' >
                                     {
                                         usuarios.map(usuario => (
-                                            <option key={usuario.id} value={usuario.email}>{usuario.nombre}</option>
+                                            <option key={usuario._id} value={usuario.email}>{usuario.nombre}</option>
                                         ))
                                     }
                                 </select>
@@ -86,7 +87,10 @@ export function CreateMarca() {
                                     <option value="Inactivo" >Inactivo</option>
                                 </select>
                             </div>
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <div className="form-group mb-3 d-flex justify-content-center">
+                                <button type="submit" className="btn btn-primary mx-3" style={{width: 8 + "rem" }}> Crear</button>
+                                <Link to="/marcas" className="btn btn-secondary mx-3" style={{width: 8 + "rem" }}> Cancelar </Link>
+                            </div>
                         </form>               
                     </div>
                 </div>

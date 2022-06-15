@@ -19,7 +19,7 @@ export function ListInventarios(){
                 icon: 'success',
                 title: 'Cagando..',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 500
               })
             const inventarios = await API.getInventarios();
             setInventarios(inventarios);

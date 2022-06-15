@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 
 import { NavBar } from '../../components/navBar/NavBar'
 
@@ -73,13 +74,13 @@ export function CreateTipo(){
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-12">
+                    <div className="col col-12 w-100 d-flex justify-content-center">
                         <form onSubmit={handleSubmit}>
-                            <div className="form-group">
+                            <div className="form-group my-2" style={{width: 40 + "rem" }}>
                                 <label htmlFor="nombre">Nombre</label>
                                 <input type="text" className="form-control" id="nombre" name="nombre" value={nombre} onChange={handleChange} required='' />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group my-2">
                                 <label htmlFor="usuario">Usuario</label>
                                 <select className="form-control" id="usuario" name="email" value={email} onChange={handleChange} required=''>
                                     {
@@ -89,7 +90,7 @@ export function CreateTipo(){
                                     }
                                 </select>
                             </div>
-                            <div className="form-group">
+                            <div className="form-group my-2">
                                 <label htmlFor="estado">Estado</label>
                                 <select className="form-control" id="estado" name="estado" value={estado} onChange={handleChange} required=''>
                                     <option value="">Seleccione un estado</option>
@@ -97,7 +98,10 @@ export function CreateTipo(){
                                     <option value="Inactivo">INACTIVO</option>
                                 </select>
                             </div>
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <div className="form-group my-3 d-flex justify-content-center">
+                                <button type="submit" className="btn btn-primary mx-3" style={{width: 8 + "rem" }}> Crear</button>
+                                <Link to="/tipos" className="btn btn-secondary mx-3" style={{width: 8 + "rem" }}> Cancelar </Link>
+                            </div>
                         </form>
                     </div>
                 </div>
