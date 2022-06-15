@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import * as API from "../../services/iventarios-services";
 
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
 import { NavBar } from "../../components/navBar/NavBar";
 import './ListInventario.css';
 
@@ -12,9 +14,20 @@ export function ListInventarios(){
     const [inventarios, setInventarios] = useState([]);
 
     const getInventarios = async () => {
-        const inventarios = await API.getInventarios();
-        setInventarios(inventarios);
-        console.log(inventarios);
+        try {
+            Swal.fire({
+                icon: 'success',
+                title: 'Cagando..',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            const inventarios = await API.getInventarios();
+            setInventarios(inventarios);
+            console.log(inventarios);
+        } catch (error) {
+            console.log(error);
+        }
+            
     }
 
     useEffect(() => {

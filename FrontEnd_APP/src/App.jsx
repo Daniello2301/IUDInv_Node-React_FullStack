@@ -22,7 +22,7 @@ import { CreateEstado } from './views/estados/CreateEstado';
 export function App() {
 
   return (
-    <div className="main bg-dark bg-opacity-10" style={{height: 100 + 'vh'}}>
+    <div className="main bg-dark bg-opacity-10">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/inventarios" element={<ListInventarios />} />
