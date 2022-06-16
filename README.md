@@ -19,7 +19,7 @@ In this README i go to explain u how to run the project
     <h2>BackEnd folder<h2>
     <strong>cd BackEnd_App</strong>
     <strong>npm install</strong>
-    ![image](https://user-images.githubusercontent.com/92329281/173980421-97185697-90ec-4e70-81e4-473e1de58044.png)
+      ![image](https://user-images.githubusercontent.com/92329281/173980421-97185697-90ec-4e70-81e4-473e1de58044.png)
 
 
   
