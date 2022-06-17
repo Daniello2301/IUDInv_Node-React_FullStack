@@ -1,10 +1,11 @@
 
-POST https://localhost:3300/api/usuarios
+POST https://localhost:3300/api/estados HTTP/1.1
 content-type: application/json
 
 {
-    "nomre": "Juan",
-    "email": "juan@gamil.com",
-    "contrasena": "123456",
-    "estado": "activo"
+    "nome": "Perdido",
+    "estado": "Inactivo",
+    "usuario":{
+        "emial":"daniel@gmail.com"
+    }
 }

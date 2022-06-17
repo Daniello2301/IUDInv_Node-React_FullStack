@@ -1,6 +1,8 @@
-const EstadoEquipo = require('../models/EstadoEquipo');
 
 const Usuario = require('../models/Usuario')
+
+const estadoValitation = require('../helpers/estados-validator');
+const EstadoEquipo = require('../models/EstadoEquipo');
 
 
 
@@ -84,12 +86,21 @@ const getById = async(req, res) => {
 const create = async(req, res) => {
     try 
     {
+        // Validate request 
+
+        const validationsMesseges = estadoValitation(req);
+
+        if(estadoValitation.length > 0){
+            res.status(400).json({msj: validationsMesseges});
+            return;
+        }
         
         // mostramos lo que enviamos en el cuerpo de la peticion
         console.log("POST/estadosequipos")
         console.log(req.body)
 
-        // declaramos variables para cada atributo de entrada 
+
+
         const nombre = req.body.nombre.toUpperCase();
         const estado = req.body.estado;
         const email = req.body.usuario.email;
@@ -98,7 +109,7 @@ const create = async(req, res) => {
         // validamos que no exista
         const estadoEquipo = await EstadoEquipo.findOne({nombre});
         if(estadoEquipo){
-            return res.status(500).json({ mjs: "El Estado ya existe" });
+            return res.status(500).json({ mjs: "La marca ya existe" });
         }
 
         // Validamos que el usuario que se este ingresando exista
@@ -115,12 +126,11 @@ const create = async(req, res) => {
         }
 
         // guardamos
-        const estadoEquipoSave = new EstadoEquipo(data);
+        const estadoSave = new EstadoEquipo(data);
 
-        estadoEquipoSave.save();
+        estadoSave.save();
         
-        res.status(201).json(estadoEquipoSave);
-
+        res.status(201).json(estadoSave);
 
     } catch (error) {
         
@@ -137,6 +147,12 @@ const update = async(req, res) => {
     try 
     {
         console.log("PUT/estadosequipo/", req.params.id)
+
+        const errors = estadoValitation(req);
+
+        if(errors.length > 0){
+            return res.status(500).send(errors);
+        }
 
         const id = req.params.id
 

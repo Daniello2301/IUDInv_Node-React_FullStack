@@ -78,11 +78,11 @@ export function CreateEstado(){
                         <form onSubmit={handleSubmit}>
                             <div className="form-group my-3">
                                 <label htmlFor="nombre">Nombre</label>
-                                <input type="text" className="form-control" id="nombre" name="nombre" value={nombre} onChange={handleChange} />
+                                <input type="text" className="form-control" id="nombre" name="nombre" value={nombre} onChange={handleChange} required  />
                             </div>
                             <div className="form-group my-3">
                                 <label htmlFor="usaurio">Usuario</label>
-                                <select className="form-control" id="usuario" name="email" value={email} onChange={handleChange}>
+                                <select className="form-control" id="usuario" name="email" value={email} onChange={handleChange} required >
                                     <option value="">Seleccione un usuario</option>
                                     {
                                         usuarios.map(usuario => (
@@ -93,7 +93,7 @@ export function CreateEstado(){
                             </div>
                             <div className="form-group my-3">
                                 <label htmlFor="estado">Estado</label>
-                                <select className="form-control" id="estado" name="estado" value={estado} onChange={handleChange} required="" >
+                                <select className="form-control" id="estado" name="estado" value={estado} onChange={handleChange} required >
                                     <option value="">Seleccione un estado</option>
                                     <option value="Activo">Activo</option>
                                     <option value="Inactivo">Inactivo</option>

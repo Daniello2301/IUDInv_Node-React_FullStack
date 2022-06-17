@@ -1,5 +1,7 @@
 const Usuario = require('../models/Usuario');
 
+const  usuarioValidator  = require('../helpers/usaurio-validator');
+
 
 // metodo listar todo
 const getAll = async( req, res ) =>{
@@ -61,6 +63,15 @@ const create = async(req, res) => {
        console.log("POST/usuarios")
        console.log(req.body)
 
+       /* **** Validaciones ****** */
+    
+        const errors = usuarioValidator(req);
+
+        if(errors.length > 0){
+            return res.status(500).send(errors);
+        }
+    
+
        const nombre = req.body.nombre;
        const email = req.body.email;
        const estado = req.body.estado;
@@ -90,6 +101,13 @@ const update = async(req, res) => {
     
     try 
     {
+
+        const errors = usuarioValidator(req);
+
+        if(errors.length > 0){
+            return res.status(500).send(errors);
+        }
+
         const id = req.params.id;
         const {nombre, ...data } = req.body;
 

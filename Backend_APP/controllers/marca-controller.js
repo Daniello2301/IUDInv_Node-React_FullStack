@@ -2,6 +2,7 @@ const Marca = require('../models/Marca');
 
 const Usuario = require('../models/Usuario')
 
+const marcaValidator = require('../helpers/marca-validator');
 
 /* ********************************************************************************************* */
 // Listar todos las marcas 
@@ -80,6 +81,13 @@ const getById = async(req, res) => {
 const create = async(req, res) => {
     try 
     {
+        // Validamos que si ingresen 
+        const validations = marcaValidator(req);
+
+        if(validations.length > 0){
+            res.status(400).json({msj: validations});
+            return;
+        }
         
         // mostramos lo que enviamos en el cuerpo de la peticion
         console.log("POST/marcas")
@@ -133,6 +141,12 @@ const update = async(req, res) => {
     try 
     {
         console.log("PUT/marcas/", req.params.id)
+
+        const errors = marcaValidator(req);
+
+        if(errors.length > 0){
+            return res.status(500).send(errors);
+        }
 
         const id = req.params.id
 

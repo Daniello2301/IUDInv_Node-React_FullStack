@@ -1,7 +1,7 @@
 const TipoEquipo = require('../models/TipoEquipo');
 const Usuario = require('../models/Usuario');
 
-
+const tipoValidator = require('../helpers/tipo-validator');
 
 /* ******************************************************************************************************** */
 // GET All topos de equipio 
@@ -83,27 +83,45 @@ const create = async(req, res) => {
         console.log("POST/tiposequipos")
         console.log(req.body)
 
-       const nombre = req.body.nombre.toUpperCase();
-       const estado = req.body.estado;
-       const email = req.body.usuario.email;
 
-        const tipoEquipo = await TipoEquipo.findOne({nombre});
-        if(tipoEquipo) return res.status(500).json({mjs: 'Ya existe el Tipo'});
+        const validations = tipoValidator(req);
 
-        const usuarioDB = await Usuario.findOne({ email });
-        if(!usuarioDB) return res.status(404).json({mjs: 'El usuario no existe'});
+        if(tipoValidator.length > 0){
+            return res.status(400).json({msj: validations});
+        }
 
+
+        const nombre = req.body.nombre.toUpperCase();
+        const estado = req.body.estado;
+        const email = req.body.usuario.email;
+
+        
+        // validamos que no exista
+        const tipo = await TipoEquipo.findOne({ nombre });
+        if(tipo){
+            return res.status(500).json({ mjs: "La marca ya existe" });
+        }
+
+        // Validamos que el usuario que se este ingresando exista
+        const usuarioExiste = await Usuario.findOne({ email });
+        if(!usuarioExiste){
+            return res.status(500).json({ mjs: "El usuario no existe" });
+        }
+
+        // declaramos un objeto en el que almacenamos el request enviado para pasarselo al metodo crear
         const data = {
             nombre,
             estado,
-            usuario: usuarioDB._id
+            usuario: usuarioExiste._id
         }
 
-        const tipoEquipoSave = new TipoEquipo(data);
+        // guardamos
+        const tipoSave = new TipoEquipo(data);
 
-        tipoEquipoSave.save();
+        tipoSave.save();
+        
+        res.status(201).json(tipoSave);
 
-        res.status(201).json(tipoEquipoSave);
     } catch (error) {
         console.log("Error", error)
         res.status(500).json({msj: error.message}).send("Ocurrió un error")
@@ -119,6 +137,13 @@ const update = async (req, res) => {
     try 
     {
         console.log("PUT/tiposequipo/", req.params.id)
+
+        const errors = tipoValidator(req);
+
+        if(errors.length > 0){
+            return res.status(500).send(errors);
+        }
+
         
         const id = req.params.id
 

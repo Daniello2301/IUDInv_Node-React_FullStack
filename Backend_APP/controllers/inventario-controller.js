@@ -3,7 +3,7 @@ const Marca = require('../models/Marca');
 const EstadoEquipo = require('../models/EstadoEquipo');
 const TipoEquipo = require('../models/TipoEquipo');
 const Usuario = require('../models/Usuario');
-const { inventarioValidator  } = require('../helpers/inventario-validators')
+const  inventarioValidator   = require('../helpers/inventario-validators')
 
 
 
@@ -163,7 +163,7 @@ const create = async ( req, res ) => {
         const inventarioSave = new Inventario(data);
 
         inventarioSave.save()
-
+ 
         console.log(inventarioSave)
         res.status(201).json(inventarioSave)
 
