@@ -45,7 +45,7 @@ export function EditarTipo() {
     useEffect(() => {
         setDataForm({
             nombre: tipoEquipo.nombre,
-            usuario: tipoEquipo.usuario,
+            usuario: tipoEquipo.usuario?.email,
             estado: tipoEquipo.estado
         });
     },[tipoEquipo]);
@@ -80,8 +80,7 @@ export function EditarTipo() {
                 title: 'Marca actualizada',
                 text: 'La marca se actualizó correctamente',
                 icon: 'success',
-                confirmButtonText: 'Ok',
-                showConfirmButton: true
+                showConfirmButton: false
             })
         } catch (error) {
             console.log(error);

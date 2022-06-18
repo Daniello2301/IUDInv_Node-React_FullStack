@@ -65,7 +65,12 @@ const getById = async(req, res) => {
         const {id} = req.params;
         const query = {_id: id};
         
-        const response = await EstadoEquipo.findById(query);
+        const response = await EstadoEquipo.findById(query).populate(
+            {
+                path:'usuario',
+                select: 'nombre email estado'
+            }
+        );
 
         res.status(200).json(response);
     } catch (error) {

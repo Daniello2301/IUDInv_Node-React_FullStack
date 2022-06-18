@@ -14,12 +14,16 @@ export function EditUsuario() {
         const [usuario, setUsuario] = useState({});
 
         const [dataForm, setDataForm] = useState({});
-        const { nombre = '', email = '', contrasena = '', estado = ''} = dataForm;
+        const { nombreUser = '', email = '', estado = ''} = dataForm;
 
         const getUsuario = async () => {
-            const usuario = await API.getUsuario(id);
-            setUsuario(usuario);
-            console.log(usuario);
+            try {
+                const usuario = await API.getUsuario(id);
+                setUsuario(usuario);
+                console.log(usuario);
+            } catch (error) {
+                console.log(error);
+            }
         }
 
         useEffect(() => {
@@ -43,15 +47,15 @@ export function EditUsuario() {
 
         const handleSubmit = async (e) => {
             e.preventDefault();
-            const usuario = {
-                nombre,
-                email,
-                contrasena,
-                estado
+            const data = {
+                nombre: nombreUser,
+                email: email,
+                estado: estado,
             }
+            console.log(data)
             try {
 
-                const response = await API.updateUser(id, usuario);
+                const response = await API.updateUser(id, data);
                 Swal.fire({
                     title: 'Usuario actualizado',
                     text: 'El usuario se actualizó correctamente',
@@ -61,12 +65,7 @@ export function EditUsuario() {
                 })
                 console.log(response);
             } catch (error) {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'No se pudo actualizar el usuario',
-                    icon: 'error',
-                    confirmButtonText: 'Ok'
-                })
+                console.log(error);
     
             } 
         }
@@ -90,7 +89,7 @@ export function EditUsuario() {
                                         <form onSubmit={handleSubmit}>
                                             <div className="form-group my-2">
                                                 <label>Nombre</label>
-                                                <input type="text" className="form-control" name="nombre" value={nombre} onChange={handleChange} />
+                                                <input type="text" className="form-control" name="nombreUser" value={nombreUser} onChange={handleChange} />
                                             </div>
                                             <div className="form-group my-2">
                                                 <label>Email</label>

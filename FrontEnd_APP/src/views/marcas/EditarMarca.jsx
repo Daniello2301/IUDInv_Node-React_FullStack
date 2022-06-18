@@ -27,6 +27,7 @@ export function EditarMarca() {
             const marca = await API.getMarca(id);
             setMarca(marca);
             console.log(marca);
+            console.log(marca.usuario?.nombre);
         } catch (error) {
             console.log(error);
         }
@@ -49,7 +50,7 @@ export function EditarMarca() {
     useEffect(() => {
         setDataForm({
             nombre: marca.nombre,
-            usuario: marca.usuario,
+            usuario: marca.usuario?.email,
             estado: marca.estado
         });
     },[marca]);

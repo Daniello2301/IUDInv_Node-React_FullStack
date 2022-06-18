@@ -50,10 +50,22 @@ const getById = async( req, res ) => {
      const { id } = req.params;
     
      const response = await Inventario.findById({_id: id}).populate(
-         {
-             path: 'usuario',
-             select: 'nombre email estado '
-         }
+       [{
+            path: 'usuario',
+            select: 'nombre email estado '
+        },
+        {
+            path: 'marca',
+            select: 'nombre estado'
+        },
+        {
+            path: 'estadoEquipo',
+            select: 'nombre estado'
+        },
+        {
+            path: 'tipoEquipo',
+            select: 'nombre estado'
+        }]
      );
 
      console.log("GET/intentarios/",id);

@@ -45,7 +45,7 @@ export function EditarEstado() {
     useEffect(() => {
         setDataForm({
             nombre: estadoEquipo.nombre,
-            usuario: estadoEquipo.usuario,
+            usuario: estadoEquipo.usuario?.email,
             estado: estadoEquipo.estado
         });
     },[estadoEquipo]);
@@ -79,9 +79,7 @@ export function EditarEstado() {
             Swal.fire({
                 title: 'Marca actualizada',
                 text: 'La marca se actualizó correctamente',
-                icon: 'success',
-                confirmButtonText: 'Ok',
-                showConfirmButton: true
+                icon: 'success'
             })
         } catch (error) {
             console.log(error);

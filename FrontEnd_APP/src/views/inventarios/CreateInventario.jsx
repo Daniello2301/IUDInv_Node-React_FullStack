@@ -166,7 +166,7 @@ export function CreateInventario() {
                             <div className="row d-flex justify-content-center">
                                 <div className="form-group my-2" style={{width: 13 + 'rem'}}>
                                     <label htmlFor="color" >Color</label>
-                                    <input type="color" className="form-control border-secondary" id="color" name="color" value={color} onChange={handleChange} />
+                                    <input type="text" className="form-control border-secondary" id="color" name="color" value={color} onChange={handleChange} />
                                 </div>
                                 <div className="form-group my-2" style={{width: 13 + "rem"}} >
                                     <label htmlFor="fechaCompra" >Fecha de Compra</label>

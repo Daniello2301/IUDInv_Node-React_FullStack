@@ -23,7 +23,6 @@ export function EditarInventario(){
     const [estadosEquipo, setEstadosEquipo] = useState([]);
     const [tiposEquipo, setTiposEquipo] = useState([]);
 
-
     const getTiposEquipo = async () => {
         try {
             const tiposEquipo = await API_T.getTipos();
@@ -71,6 +70,7 @@ export function EditarInventario(){
         const inventario = await API.getInventario(id);
         setInventario(inventario);
         console.log(inventario);
+        console.log(inventario.usuario?.nombre);
        } catch (error) {
           console.log(error); 
        }
@@ -93,10 +93,10 @@ export function EditarInventario(){
             fechaCompra: inventario.fechaCompra,
             precio: inventario.precio,
             estado: inventario.estado,
-            usuario: inventario.usuario,
-            marca: inventario.marca,
-            estadoEquipo: inventario.estadoEquipo,
-            tipoEquipo: inventario.tipoEquipo
+            usuario: inventario.usuario?.email,
+            marca: inventario.marca?.nombre,
+            estadoEquipo: inventario.estadoEquipo?.nombre,
+            tipoEquipo: inventario.tipoEquipo?.nombre
 
         });
     },[inventario]);

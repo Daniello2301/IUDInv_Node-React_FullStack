@@ -46,12 +46,13 @@ export function ListInventarios(){
                     <Link to={`/inventarios/create`} className="btn btn-primary">Agregar Inventario</Link>
                 </div>           
             </div>
-            <div className="row" >
+            <div className="row d-flex flex-row justify-content-center" >
                     {
                         inventarios.map(inventario => (
                             <>
-                                <div key={inventario._id} className="card border-secondary position-relative" >
-                                    <img src={inventario.foto} className="card-img-top" alt="image..."/>
+                            <div className="col" key={inventario.serial}>
+                                <div  className="card border-secondary position-relative" >
+                                    <img src={inventario.foto} className="card-img-top" alt="image..." />
                                     <div className="card-body">
                                         <h5 className="card-title"> { inventario.descripcion ? inventario.descripcion : "Not Disponible"} </h5>
                                     </div>
@@ -65,6 +66,7 @@ export function ListInventarios(){
                                         <Link to={`/inventarios/edit/${inventario._id}`} className="btn btn-secondary" >Editar</Link>
                                     </div>
                                 </div>
+                            </div>
                             </>
                         ))
                     }

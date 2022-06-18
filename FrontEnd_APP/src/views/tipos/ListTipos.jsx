@@ -48,7 +48,7 @@ export function ListTipos() {
             </div>
             <div className="row" >
                 <div className="col">
-                <div clasName="col col-md-12">
+                <div className="col col-md-12">
                     <table className="table">
                         <thead>
                             <tr>
