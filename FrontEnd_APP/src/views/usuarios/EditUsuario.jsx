@@ -89,15 +89,19 @@ export function EditUsuario() {
                                         <form onSubmit={handleSubmit}>
                                             <div className="form-group my-2">
                                                 <label>Nombre</label>
+<<<<<<< HEAD
                                                 <input type="text" className="form-control" name="nombreUser" value={nombreUser} onChange={handleChange} />
+=======
+                                                <input type="text" className="form-control" name="nombre" value={nombre} onChange={handleChange} required />
+>>>>>>> 4aee266a3c49c2f34bead75204423b7b4d7c0588
                                             </div>
                                             <div className="form-group my-2">
                                                 <label>Email</label>
-                                                <input type="email" className="form-control" name="email" value={email} onChange={handleChange} />
+                                                <input type="email" className="form-control" name="email" value={email} onChange={handleChange} required />
                                             </div>
                                             <div className="form-group my-2">
                                                 <label>Estado</label>
-                                                <select className="form-control" name="estado" value={estado} onChange={handleChange}>
+                                                <select className="form-control" name="estado" value={estado} onChange={handleChange} required >
                                                     <option value="">Seleccione un estado</option>
                                                     <option value="Activo">Activo</option>
                                                     <option value="Inactivo">Inactivo</option>

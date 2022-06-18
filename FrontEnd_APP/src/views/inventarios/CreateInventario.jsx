@@ -146,21 +146,21 @@ export function CreateInventario() {
                             <div className="row" >
                                 <div className="form-group my-2 w-50">
                                     <label htmlFor="serial" >Serial</label>
-                                    <input type="text" className="form-control border-secondary" id="serial" name="serial" value={serial} onChange={handleChange} />
+                                    <input type="text" className="form-control border-secondary" id="serial" name="serial" value={serial} onChange={handleChange} required='Serial requerido'/>
                                 </div>
                                 <div className="form-group my-2 w-50">
                                     <label htmlFor="modelo" >Modelo</label>
-                                    <input type="text" className="form-control border-secondary" id="modelo" name="modelo" value={modelo} onChange={handleChange} />
+                                    <input type="text" className="form-control border-secondary" id="modelo" name="modelo" value={modelo} onChange={handleChange} required />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="form-group my-2 w-50">
                                     <label htmlFor="descripcion" >Descripcion</label>
-                                    <input type="text" className="form-control border-secondary" id="descripcion" name="descripcion" value={descripcion} onChange={handleChange} />
+                                    <input type="text" className="form-control border-secondary" id="descripcion" name="descripcion" value={descripcion} onChange={handleChange} required  />
                                 </div>
                                 <div className="form-group my-2 w-50">
                                     <label htmlFor="foto" >Foto</label>
-                                    <input type="text" className="form-control border-secondary" id="foto" name="foto" value={foto} onChange={handleChange} />
+                                    <input type="text" className="form-control border-secondary" id="foto" name="foto" value={foto} onChange={handleChange} required  />
                                 </div>
                             </div>
                             <div className="row d-flex justify-content-center">
@@ -170,15 +170,15 @@ export function CreateInventario() {
                                 </div>
                                 <div className="form-group my-2" style={{width: 13 + "rem"}} >
                                     <label htmlFor="fechaCompra" >Fecha de Compra</label>
-                                    <input type="date" className="form-control border-secondary" id="fechaCompra" name="fechaCompra" value={fechaCompra} onChange={handleChange} />
+                                    <input type="date" className="form-control border-secondary" id="fechaCompra" name="fechaCompra" value={fechaCompra} onChange={handleChange} required />
                                 </div>
                                 <div className="form-group my-2" style={{width: 13 + "rem"}}>
                                     <label htmlFor="precio" >Precio</label>
-                                    <input type="number" className="form-control border-secondary" id="precio" name="precio" value={precio} onChange={handleChange} />
+                                    <input type="number" className="form-control border-secondary" id="precio" name="precio" value={precio} onChange={handleChange} required />
                                 </div>
                                 <div className="form-group my-2" style={{width: 15 + "rem"}}>
                                     <label htmlFor="estado" >Estado</label>
-                                    <select className="form-control border-secondary" id="estado" name="estado" value={estado} onChange={handleChange}>
+                                    <select className="form-control border-secondary" id="estado" name="estado" value={estado} onChange={handleChange} required >
                                         <option value="">Seleccione un estado</option>
                                         <option value="Activo">Activo</option>
                                         <option value="Inactivo">Inactivo</option>
@@ -188,7 +188,7 @@ export function CreateInventario() {
                             <div className="row d-flex justify-content-center">
                                 <div className="form-group my-2 " style={{width: 15 + "rem"}}>
                                     <label htmlFor="email" >Usuario</label>
-                                    <select className="form-control border-secondary" id="email" name="email" value={email} onChange={handleChange}>
+                                    <select className="form-control border-secondary" id="email" name="email" value={email} onChange={handleChange} required >
                                         <option value="">Seleccione un usuario</option>
                                         {
                                             usuarios.map(usuario => (
@@ -199,7 +199,7 @@ export function CreateInventario() {
                                 </div>
                                 <div className="form-group my-2" style={{width: 15 + "rem"}}>
                                     <label htmlFor="marca" >Marca</label>
-                                    <select className="form-control border-secondary" id="marca" name="marca" value={marca} onChange={handleChange}>
+                                    <select className="form-control border-secondary" id="marca" name="marca" value={marca} onChange={handleChange} required >
                                         <option value="">Seleccione una marca</option>
                                         {
                                             marcas.map(marca => (
@@ -210,7 +210,7 @@ export function CreateInventario() {
                                 </div>
                                 <div className="form-group my-2" style={{width: 15 + "rem"}}>
                                     <label htmlFor="estadoEquipo" >Estado Equipo</label>
-                                    <select className="form-control border-secondary" id="estadoEquipo" name="estadoEquipo" value={estadoEquipo} onChange={handleChange}>
+                                    <select className="form-control border-secondary" id="estadoEquipo" name="estadoEquipo" value={estadoEquipo} onChange={handleChange} required >
                                         <option value="">Seleccione un estado</option>
                                         {
                                             estadosEquipo.map(estadoEquipo => (
@@ -221,7 +221,7 @@ export function CreateInventario() {
                                 </div>
                                 <div className="form-group my-2" style={{width: 15 + "rem"}}>
                                     <label htmlFor="tipoEquipo" >Tipo Equipo</label>
-                                    <select className="form-control border-secondary" id="tipoEquipo" name="tipoEquipo" value={tipoEquipo} onChange={handleChange}>
+                                    <select className="form-control border-secondary" id="tipoEquipo" name="tipoEquipo" value={tipoEquipo} onChange={handleChange} required >
                                         <option value="">Seleccione un tipo</option>
                                         {
                                             tiposEquipo.map(tipoEquipo => (

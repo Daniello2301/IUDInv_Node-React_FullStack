@@ -78,11 +78,11 @@ export function CreateTipo(){
                         <form onSubmit={handleSubmit}>
                             <div className="form-group my-2" style={{width: 40 + "rem" }}>
                                 <label htmlFor="nombre">Nombre</label>
-                                <input type="text" className="form-control" id="nombre" name="nombre" value={nombre} onChange={handleChange} required='' />
+                                <input type="text" className="form-control" id="nombre" name="nombre" value={nombre} onChange={handleChange} required />
                             </div>
                             <div className="form-group my-2">
                                 <label htmlFor="usuario">Usuario</label>
-                                <select className="form-control" id="usuario" name="email" value={email} onChange={handleChange} required=''>
+                                <select className="form-control" id="usuario" name="email" value={email} onChange={handleChange} required>
                                     {
                                         usuarios.map(usuario => (
                                             <option key={usuario._id} value={usuario.email}>{usuario.nombre}</option>
@@ -92,7 +92,7 @@ export function CreateTipo(){
                             </div>
                             <div className="form-group my-2">
                                 <label htmlFor="estado">Estado</label>
-                                <select className="form-control" id="estado" name="estado" value={estado} onChange={handleChange} required=''>
+                                <select className="form-control" id="estado" name="estado" value={estado} onChange={handleChange} required>
                                     <option value="">Seleccione un estado</option>
                                     <option value="Activo">ACTIVO</option>
                                     <option value="Inactivo">INACTIVO</option>

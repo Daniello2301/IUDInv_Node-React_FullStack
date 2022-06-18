@@ -67,11 +67,11 @@ export function CreateMarca() {
                         <form onSubmit={handleSubmit} className="form_container w-50" >
                             <div class="mb-3">
                                 <label for="nombre" className="form-label">Nombre</label>
-                                <input type="text" className="form-control" id="nombre" name="nombre" value={nombre} onChange={e => setNombre(e.target.value) } required='' />
+                                <input type="text" className="form-control" id="nombre" name="nombre" value={nombre} onChange={e => setNombre(e.target.value) } required />
                             </div>
                             <div className="fomr-group mb-3">
                                 <label for="Select" className="form-label">Usuario</label>
-                            <select id="Select" className="form-select" name="usuario" onChange={e => setEmail(e.target.value) }  value={email} required='' >
+                            <select id="Select" className="form-select" name="email" onChange={e => setEmail(e.target.value) }  value={email} required >
                                     {
                                         usuarios.map(usuario => (
                                             <option key={usuario._id} value={usuario.email}>{usuario.nombre}</option>
@@ -81,7 +81,7 @@ export function CreateMarca() {
                             </div>
                             <div className="form-group mb-3">
                                 <label for="estado" className="form-label">Estado</label>
-                                <select id="estado" className="form-select" name="estado" value={estado} onChange={e => setEstado(e.target.value)} required="" >
+                                <select id="estado" className="form-select" name="estado" value={estado} onChange={e => setEstado(e.target.value)} required >
                                     <option >--Select--</option>
                                     <option value="Activo" >Activo</option>
                                     <option value="Inactivo" >Inactivo</option>

@@ -4,7 +4,7 @@ const router = require('express').Router();
 /// Importamos el controllador 
 const marcaController = require('../controllers/marca-controller');
 
-
+ 
 // definimos las rutas
 router.route('/marcas')
     .get(marcaController.getAll)

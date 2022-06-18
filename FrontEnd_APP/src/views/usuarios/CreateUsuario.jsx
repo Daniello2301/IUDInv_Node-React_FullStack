@@ -49,19 +49,19 @@ export function CreateUsuario(){
                         <form onSubmit={handleSubmit} className="form_container w-50" >
                             <div class="form-group  mb-3">
                                 <label htmlFor="nombre" className="form-label">Nombre</label>
-                                <input type="text" className="form-control" id="nombre" name="nombre" value={nombre} onChange={e => handleChange(e) } required='' />
+                                <input type="text" className="form-control" id="nombre" name="nombre" value={nombre} onChange={e => handleChange(e) } required />
                             </div>
                             <div className="form-group  mb-3">
                                 <label htmlFor="email" className="form-label">Email</label>
-                                <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" onChange={e => handleChange(e) } value={email} required='' />
+                                <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" onChange={e => handleChange(e) } value={email} required />
                             </div>
                             <div className="form-group  mb-3">
                                 <label htmlFor="contrasena" className="form-label">Password</label>
-                                <input type="password" className="form-control" id="contrasena"name="contrasena" onChange={e => handleChange(e) } value={contrasena} required='' />
+                                <input type="password" className="form-control" id="contrasena"name="contrasena" onChange={e => handleChange(e) } value={contrasena} required />
                             </div>
                             <div className="form-group  mb-3">
                                 <label htmlFor="Select" className="form-label">Estado</label>
-                                <select id="Select" className="form-select" name="estado" onChange={e => handleChange(e) }  value={estado} required='' >
+                                <select id="Select" className="form-select" name="estado" onChange={e => handleChange(e) }  value={estado} required>
                                     <option>--Select--</option>
                                     <option value="Activo" >Activo</option>
                                     <option value="Inactivo">Inactivo</option>

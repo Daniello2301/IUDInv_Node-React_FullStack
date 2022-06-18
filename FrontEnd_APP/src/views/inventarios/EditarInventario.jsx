@@ -180,37 +180,37 @@ export function EditarInventario(){
                                             <div className="row my-2">
                                                 <div className="form-group" style={{width: 10+ "rem"}}>
                                                     <label htmlFor="serial">Serial</label>
-                                                    <input type="text" className="form-control" id="serial" name="serial" value={serial} onChange={handleChange} />
+                                                    <input type="text" className="form-control" id="serial" name="serial" value={serial} onChange={handleChange} required />
                                                 </div>
                                                 <div className="form-group" style={{width: 10+ "rem"}}>
                                                     <label htmlFor="modelo">Modelo</label>
-                                                    <input type="text" className="form-control" id="modelo" name="modelo" value={modelo} onChange={handleChange} />
+                                                    <input type="text" className="form-control" id="modelo" name="modelo" value={modelo} onChange={handleChange} required/>
                                                 </div>
                                                 <div className="form-group" style={{width: 10+ "rem"}}>
                                                     <label htmlFor="descripcion">Descripcion</label>
-                                                    <input type="text" className="form-control" id="descripcion" name="descripcion" value={descripcion} onChange={handleChange} />
+                                                    <input type="text" className="form-control" id="descripcion" name="descripcion" value={descripcion} onChange={handleChange} required/>
                                                 </div>
                                                 <div className="form-group" style={{width: 10+ "rem"}}>
                                                     <label htmlFor="foto">Foto</label>
-                                                    <input type="text" className="form-control" id="foto" name="foto" value={foto} onChange={handleChange} />
+                                                    <input type="text" className="form-control" id="foto" name="foto" value={foto} onChange={handleChange} required />
                                                 </div>
                                             </div> 
                                             <div className="row my-2 d-flex justify-content-center">
                                                 <div className="form-group"  style={{width: 8+ "rem"}}>
                                                     <label htmlFor="color">Color</label>
-                                                    <input type="text" className="form-control" id="color" name="color" value={color} onChange={handleChange} />
+                                                    <input type="text" className="form-control" id="color" name="color" value={color} onChange={handleChange} required  />
                                                 </div>
                                                 <div className="form-group" style={{width: 10 + "rem"}}>
                                                     <label htmlFor="fechaCompra">Fecha de Compra</label>
-                                                    <input type="date" className="form-control" id="fechaCompra" name="fechaCompra" value={dayjs(fechaCompra).locale("es").format('YYYY-MM-DD')} onChange={handleChange} />
+                                                    <input type="date" className="form-control" id="fechaCompra" name="fechaCompra" value={dayjs(fechaCompra).locale("es").format('YYYY-MM-DD')} onChange={handleChange} required/>
                                                 </div>
                                                 <div className="form-group" style={{width: 8+ "rem"}}>
                                                     <label htmlFor="precio" >Precio</label>
-                                                    <input type="number" className="form-control" id="precio" name="precio" value={precio} onChange={handleChange} />
+                                                    <input type="number" className="form-control" id="precio" name="precio" value={precio} onChange={handleChange} required />
                                                 </div>
                                                 <div className="form-group" style={{width: 8+ "rem"}}>
                                                     <label htmlFor="estado">Estado</label>
-                                                    <select className="form-control" id="estado" name="estado" value={estado} onChange={handleChange} >
+                                                    <select className="form-control" id="estado" name="estado" value={estado} onChange={handleChange} required>
                                                         <option value="">Seleccione el estado</option>
                                                         <option value="Activo">Activo</option>
                                                         <option value="Inactivo">Inactivo</option>
@@ -220,7 +220,7 @@ export function EditarInventario(){
                                              <div className="row">
                                                 <div className="form-group my-2 " style={{width: 10 + "rem"}}>
                                                     <label htmlFor="usuario" >Usuario</label>
-                                                    <select className="form-control border-secondary" id="usuario" name="usuario" value={usuario} onChange={handleChange}>
+                                                    <select className="form-control border-secondary" id="usuario" name="usuario" value={usuario} onChange={handleChange} required >
                                                         <option value="">Seleccione un usuario</option>
                                                         {
                                                             usuarios.map(usuario => (
@@ -231,7 +231,7 @@ export function EditarInventario(){
                                                 </div>
                                                  <div className="form-group my-2" style={{width: 10 + "rem"}} >
                                                     <label htmlFor="marca" >Marca</label>
-                                                    <select className="form-control border-secondary" id="marca" name="marca" value={marca} onChange={handleChange}>
+                                                    <select className="form-control border-secondary" id="marca" name="marca" value={marca} onChange={handleChange} required>
                                                         <option value="">Seleccione una marca</option>
                                                         {
                                                             marcas.map(marca => (
@@ -242,7 +242,7 @@ export function EditarInventario(){
                                                 </div>
                                                 <div className="form-group my-2" style={{width: 10 + "rem"}} >
                                                     <label htmlFor="estadoEquipo" >Estado Equipo</label>
-                                                    <select className="form-control border-secondary" id="estadoEquipo" name="estadoEquipo" value={estadoEquipo} onChange={handleChange}>
+                                                    <select className="form-control border-secondary" id="estadoEquipo" name="estadoEquipo" value={estadoEquipo} onChange={handleChange}  required>
                                                         <option value="">Seleccione un estado</option>
                                                         {
                                                             estadosEquipo.map(estadoEquipo => (
@@ -253,7 +253,7 @@ export function EditarInventario(){
                                                 </div>
                                                 <div className="form-group my-2" style={{width: 10 + "rem"}}  >
                                                     <label htmlFor="tipoEquipo" >Tipo Equipo</label>
-                                                    <select className="form-control border-secondary" id="tipoEquipo" name="tipoEquipo" value={tipoEquipo} onChange={handleChange}>
+                                                    <select className="form-control border-secondary" id="tipoEquipo" name="tipoEquipo" value={tipoEquipo} onChange={handleChange} required>
                                                         <option value="">Seleccione un tipo</option>
                                                         {
                                                             tiposEquipo.map(tipoEquipo => (
