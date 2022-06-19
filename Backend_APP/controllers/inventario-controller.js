@@ -135,7 +135,7 @@ const create = async ( req, res ) => {
 
         /* ***********************Setedo de la informacion ****************** */
         const serial = req.body.serial;
-        const modelo = req.body.descricion;
+        const modelo = req.body.modelo;
         const descripcion = req.body.descripcion;
         const foto = req.body.foto;
         const color = req.body.color;

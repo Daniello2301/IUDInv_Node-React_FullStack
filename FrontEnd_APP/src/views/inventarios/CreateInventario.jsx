@@ -146,7 +146,7 @@ export function CreateInventario() {
                             <div className="row" >
                                 <div className="form-group my-2 w-50">
                                     <label htmlFor="serial" >Serial</label>
-                                    <input type="text" className="form-control border-secondary" id="serial" name="serial" value={serial} onChange={handleChange} required='Serial requerido'/>
+                                    <input type="text" className="form-control border-secondary" id="serial" name="serial" value={serial} onChange={handleChange} required/>
                                 </div>
                                 <div className="form-group my-2 w-50">
                                     <label htmlFor="modelo" >Modelo</label>
@@ -179,7 +179,7 @@ export function CreateInventario() {
                                 <div className="form-group my-2" style={{width: 15 + "rem"}}>
                                     <label htmlFor="estado" >Estado</label>
                                     <select className="form-control border-secondary" id="estado" name="estado" value={estado} onChange={handleChange} required >
-                                        <option value="">Seleccione un estado</option>
+                                        <option selected >Seleccione un estado</option>
                                         <option value="Activo">Activo</option>
                                         <option value="Inactivo">Inactivo</option>
                                     </select>
