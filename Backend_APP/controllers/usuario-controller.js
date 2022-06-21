@@ -109,9 +109,9 @@ const update = async(req, res) => {
         }
 
         const id = req.params.id;
-        const {nombre, ...data } = req.body;
+        const {...data } = req.body;
 
-        const usuarioExiste = await Usuario.findOne({email: data.email, _id: {$ne: id}});
+        const usuarioExiste = await Usuario.findOne({ email: data.email,  _id: {$ne: id}});
         if(usuarioExiste){
             return res.status(500).json({mjs: "El email del usuario ya existe"})
         }
