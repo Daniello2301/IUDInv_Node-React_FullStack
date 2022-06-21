@@ -29,7 +29,7 @@ export async function getTipoEquipo(id){
         console.log(error);
     }
 }
-
+ 
 export async function updateTipo(id, tipo){
     try 
     {

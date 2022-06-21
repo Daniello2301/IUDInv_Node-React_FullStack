@@ -149,7 +149,7 @@ const update = async (req, res) => {
             return res.status(500).send(errors);
         }
 
-        
+         
         const id = req.params.id
 
        let tipoEquipo = await TipoEquipo.findById({_id: id});

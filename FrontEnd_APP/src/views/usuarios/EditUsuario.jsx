@@ -1,19 +1,21 @@
 import React from "react";
 
 import Swal from "sweetalert2";
-
+import axios from "axios";
+import { axiosConfig } from "../../helpers/axios-config";
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as API from "../../services/usuarios-services";
 import { NavBar } from "../../components/navBar/NavBar";
 
 export function EditUsuario() {
+
   const { id } = useParams();
 
   const [usuario, setUsuario] = useState({});
-
   const [dataForm, setDataForm] = useState({});
-  const { nombreUser = "", email = "", estado = "" } = dataForm;
+
+  const { nombreUser ='' , email ='' , estado ='' } = dataForm;
 
   const getUsuario = async () => {
     try {
@@ -23,47 +25,49 @@ export function EditUsuario() {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 
   useEffect(() => {
     setDataForm({
-      nombre: usuario.nombre,
+      nombreUser: usuario.nombre,
       email: usuario.email,
-      contrasena: usuario.contrasena,
-      estado: usuario.estado,
+      estado: usuario.estado
     });
   }, [usuario]);
 
   useEffect(() => {
     getUsuario();
-  }, [id]);
+  },[id]);
+
 
   const handleChange = (e) => {
-    setUsuario({ ...usuario, [e.target.name]: e.target.value });
-  };
+    setDataForm({
+      ...dataForm,
+      [e.target.name]: e.target.value
+    });
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      nombre: nombreUser,
-      email: email,
-      estado: estado,
-    };
+    const data ={
+      nombre:nombreUser,
+      email,
+      estado
+    }
     console.log(data);
     try {
-      const response = await API.updateUser(id, data);
-      Swal.fire({
-        title: "Usuario actualizado",
-        text: "El usuario se actualizó correctamente",
-        icon: "success",
-        confirmButtonText: "Ok",
-        showConfirmButton: true,
-      });
+      const response = await axiosConfig.put(`/usuarios/${id}`, data, {
+          headers:{
+            'Content-Type':'application/json'
+          }
+      })
+
       console.log(response);
     } catch (error) {
-      console.log(error);
+      console.log(error);      
     }
-  };
+
+  }
 
   return (
     <>
@@ -77,7 +81,7 @@ export function EditUsuario() {
         <div className="row">
           <div className="col-12 d-flex justify-content-center">
             <div
-              class="card border-secondary mb-3"
+              className="card border-secondary mb-3"
               style={{ width: 30 + "rem" }}
             >
               <div class="card-body text-secondary text-">
@@ -86,22 +90,12 @@ export function EditUsuario() {
                 <form onSubmit={handleSubmit}>
                   <div className="form-group my-2">
                     <label>Nombre</label>
-
                     <input
                       type="text"
                       className="form-control"
                       name="nombreUser"
                       value={nombreUser}
                       onChange={handleChange}
-                    />
-
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="nombre"
-                      value={nombre}
-                      onChange={handleChange}
-                      required
                     />
                   </div>
                   <div className="form-group my-2">

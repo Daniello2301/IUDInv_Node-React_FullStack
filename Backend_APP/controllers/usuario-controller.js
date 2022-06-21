@@ -98,7 +98,7 @@ const create = async(req, res) => {
 
 //Metodo actualizar Usaurio
 const update = async(req, res) => {
-    
+     
     try 
     {
 
@@ -109,14 +109,23 @@ const update = async(req, res) => {
         }
 
         const id = req.params.id;
-        const {...data } = req.body;
 
-        const usuarioExiste = await Usuario.findOne({ email: data.email,  _id: {$ne: id}});
+        let usuario = await Usuario.findById( {_id : id });
+        if(!usuario) return res.status(404).json({mjs: "El usuario no se econtró"});
+
+
+        const { nombre, email, estado } = req.body;
+        
+        const usuarioExiste = await Usuario.findOne({ email: email,  _id: {$ne: id}});
         if(usuarioExiste){
             return res.status(500).json({mjs: "El email del usuario ya existe"})
         }
 
-        const usuario = await Usuario.findByIdAndUpdate(id, data, {new: true});
+        usuario.nombre = nombre;
+        usuario.email = email;
+        usuario.estado = estado;
+
+        await usuario.save();
 
         console.log(usuario)
         res.status(202).json(usuario)
